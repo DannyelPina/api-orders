@@ -1,5 +1,5 @@
 interface IPaymentMethodDTO {
-    id: number;
+    id?: number;
     name: string;
 }
 

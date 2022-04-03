@@ -1,8 +1,4 @@
-// interface IProducts {
-//     id: number;
-//     name: string;
-//     price: number;
-// }
+import { IPaymentMethodDTO } from "../repositories/IPaymentMethodsRepository";
 
 export const PRODUCTS = [
     { id: 1, name: "Product 1", price: 100 },
@@ -17,7 +13,7 @@ export const PRODUCTS = [
     { id: 10, name: "Product 10", price: 1000 },
 ];
 
-export const PAYMENTS_METHODS = [
+export const PAYMENTS_METHODS: IPaymentMethodDTO[] = [
     { id: 1, name: "PayPal" },
     { id: 2, name: "Credit Card" },
     { id: 3, name: "Multibanco" },
