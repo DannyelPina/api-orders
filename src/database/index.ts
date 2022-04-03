@@ -1,8 +1,8 @@
-interface IProducts {
-    id: number;
-    name: string;
-    price: number;
-}
+// interface IProducts {
+//     id: number;
+//     name: string;
+//     price: number;
+// }
 
 export const PRODUCTS = [
     { id: 1, name: "Product 1", price: 100 },
