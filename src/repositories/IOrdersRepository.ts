@@ -1,7 +1,10 @@
+import { IPaymentMethodDTO } from "./IPaymentMethodsRepository";
+
 interface IProductOrderedDTO {
     id: number;
     name?: string;
-    quantity: number;
+    price?: number;
+    quantity?: number;
 }
 
 interface IOrderDTO {
@@ -9,12 +12,14 @@ interface IOrderDTO {
     customerId: number;
     paymentMethodId: number;
     products: IProductOrderedDTO[];
-    amount: number;
+    amount?: number;
 }
 
 interface IOrdersRepository {
     getAll(): IOrderDTO[];
     create(order: IOrderDTO): void;
+    findProductById(id: number): IProductOrderedDTO;
+    findPaymentMethodById(id: number): IPaymentMethodDTO;
 }
 
 export { IOrderDTO, IProductOrderedDTO, IOrdersRepository };
