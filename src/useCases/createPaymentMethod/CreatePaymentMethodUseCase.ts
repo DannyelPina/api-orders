@@ -1,3 +1,4 @@
+import { response } from "express";
 import {
     IPaymentMethodDTO,
     IPaymentMethodsRepository,
@@ -9,6 +10,16 @@ class CreatePaymentMethodUseCase {
     execute({ name, flag, percentOff }: IPaymentMethodDTO) {
         let percentToPay = 0;
         let off = 0;
+
+        if (!Number.isInteger(percentOff)) {
+            response.status(400);
+            throw new Error("Invalid percent off");
+        }
+
+        if (!["discount", "send-mail"].includes(flag)) {
+            response.status(400);
+            throw new Error("Invalid flag");
+        }
 
         if (flag === "discount") {
             if (percentOff) {

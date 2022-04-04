@@ -15,13 +15,17 @@ class CreatePaymentMethodController {
             });
         }
 
-        this.createPaymentMethodUseCase.execute({
-            name,
-            flag,
-            percentOff,
-        });
+        try {
+            this.createPaymentMethodUseCase.execute({
+                name,
+                flag,
+                percentOff,
+            });
 
-        response.status(201).send();
+            return response.status(201).send();
+        } catch (error) {
+            return response.send(error.message);
+        }
     }
 }
 
