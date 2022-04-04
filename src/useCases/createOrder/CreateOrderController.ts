@@ -4,7 +4,7 @@ import { CreateOrderUseCase } from "./CreateOrderUseCase";
 class CreateOrderController {
     constructor(private createOrderUseCase: CreateOrderUseCase) {}
 
-    handle(request: Request, response: Response) {
+    handle(request: Request, response: Response): Response {
         const { customerId, paymentMethodId, products } = request.body;
 
         if (!customerId || !paymentMethodId || !products) {
