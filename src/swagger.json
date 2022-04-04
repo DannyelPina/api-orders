@@ -152,7 +152,7 @@
                                         "required": false
                                     },
                                     "percentOff": {
-                                        "type": "string",
+                                        "type": "integer",
                                         "required": false
                                     }
                                 },
