@@ -1,9 +1,13 @@
 import { OrdersRepository } from "../../repositories/implementations/OrdersRepository";
 import { CreateOrderUseCase } from "./CreateOrderUseCase";
 
+let useCase: CreateOrderUseCase;
 describe("Create new order", () => {
+    beforeEach(() => {
+        useCase = new CreateOrderUseCase(OrdersRepository.getInstance());
+    });
+
     it("should throw an error if the Customer does not exists", () => {
-        const useCase = new CreateOrderUseCase(OrdersRepository.getInstance());
         const orderDTO = {
             customerId: 122222222222222,
             paymentMethodId: 1,
@@ -21,7 +25,6 @@ describe("Create new order", () => {
     });
 
     it("should throw an error if the Payment methods does not exists", () => {
-        const useCase = new CreateOrderUseCase(OrdersRepository.getInstance());
         const orderDTO = {
             customerId: 1,
             paymentMethodId: 122222222222222,
@@ -39,7 +42,6 @@ describe("Create new order", () => {
     });
 
     it("should throw an error if the specified products object is empty ", () => {
-        const useCase = new CreateOrderUseCase(OrdersRepository.getInstance());
         const orderDTO = {
             customerId: 1,
             paymentMethodId: 1,
@@ -52,7 +54,6 @@ describe("Create new order", () => {
     });
 
     it("should throw an error if the specified products does not exists", () => {
-        const useCase = new CreateOrderUseCase(OrdersRepository.getInstance());
         const orderDTO = {
             customerId: 1,
             paymentMethodId: 1,
@@ -67,5 +68,20 @@ describe("Create new order", () => {
         expect(() => useCase.execute(orderDTO)).toThrowError(
             new Error("Product not found")
         );
+    });
+
+    it("should create a new order", () => {
+        const orderDTO = {
+            customerId: 1,
+            paymentMethodId: 1,
+            products: [
+                {
+                    id: 1,
+                    quantity: 1,
+                },
+            ],
+        };
+
+        useCase.execute(orderDTO);
     });
 });
