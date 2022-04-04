@@ -1,0 +1,182 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Orders API docs",
+        "description": "An product order API documentation",
+        "version": "1.0.0",
+        "contact": {
+            "email": "natanieltavarespina@gmail.com"
+        }
+    },
+
+    "paths": {
+        "/orders": {
+            "post": {
+                "tags": ["Orders resources"],
+                "summary": "Create order",
+                "description": "A functionality that allows you to create an products order",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "customerId": {
+                                        "type": "integer",
+                                        "required": true
+                                    },
+                                    "paymentMethodId": {
+                                        "type": "integer",
+                                        "required": true
+                                    },
+                                    "products": {
+                                        "type": "array",
+                                        "required": true,
+                                        "items": {
+                                            "type": "object",
+                                            "properties": {
+                                                "id": {
+                                                    "type": "integer",
+                                                    "required": true,
+                                                    "example": 1
+                                                },
+                                                "quantity": {
+                                                    "type": "integer",
+                                                    "required": true,
+                                                    "example": 2
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "exemple": {
+                                    "customerId": 1,
+                                    "paymentMethodId": 3,
+                                    "products": [
+                                        {
+                                            "id": 9,
+                                            "quantity": 2
+                                        },
+                                        {
+                                            "id": 2,
+                                            "quantity": 2
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Order created"
+                    },
+                    "400": {
+                        "description": "Invalid order request"
+                    },
+                    "500": {
+                        "description": "Inernal server error"
+                    }
+                }
+            },
+            "get": {
+                "tags": ["Orders resources"],
+                "summary": "Get all orders",
+                "description": "A functionality that allows you to get all orders",
+                "responses": {
+                    "200": {
+                        "description": "Orders found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "id": {
+                                                "type": "integer"
+                                            },
+                                            "customerId": {
+                                                "type": "integer"
+                                            },
+                                            "paymentMethodId": {
+                                                "type": "integer"
+                                            },
+                                            "products": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "id": {
+                                                            "type": "integer"
+                                                        },
+                                                        "quantity": {
+                                                            "type": "integer"
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "amount": {
+                                                "type": "number"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "payments/methods": {
+            "post": {
+                "tags": ["Payment methods resource"],
+                "summary": "Create new payment method",
+                "description": "A functionality that allows you to create a new payment method",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "required": true
+                                    },
+                                    "flag": {
+                                        "type": "enum",
+                                        "enum": ["discount", "send-email"],
+                                        "required": false
+                                    },
+                                    "percentOff": {
+                                        "type": "string",
+                                        "required": false
+                                    }
+                                },
+                                "exemple": {
+                                    "name": "Visa",
+                                    "flag": "discount",
+                                    "percentOff": 20
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Payment method created"
+                    },
+                    "400": {
+                        "description": "Invalid payment method request"
+                    },
+                    "500": {
+                        "description": "Inernal server error"
+                    }
+                }
+            }
+        }
+    }
+}
