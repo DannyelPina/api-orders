@@ -1,6 +1,6 @@
 # ORDERS API
 
-This is a REST API made as an exersices proposal for a process customer orders by storing data in memory
+This is a REST API made as an exersices proposal for process customers orders. The project store data in memory.
 
 ### Built With
 
