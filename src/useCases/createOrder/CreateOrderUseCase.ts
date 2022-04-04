@@ -14,12 +14,12 @@ class CreateOrderUseCase {
         const customer = this.orderRepository.findCustomerById(customerId);
 
         if (!paymentData) {
-            response.status(400);
+            response.status(404);
             throw new Error("Payment method not found");
         }
 
         if (!customer) {
-            response.status(400);
+            response.status(404);
             throw new Error("Customer not found");
         }
 
