@@ -74,6 +74,9 @@
                     "400": {
                         "description": "Invalid order request"
                     },
+                    "404": {
+                        "description": "Customer or payment method not found"
+                    },
                     "500": {
                         "description": "Inernal server error"
                     }
