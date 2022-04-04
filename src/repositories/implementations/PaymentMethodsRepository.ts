@@ -15,9 +15,6 @@ class PaymentMethodsRepository implements IPaymentMethodsRepository {
         return PaymentMethodsRepository.INSTANCE;
     }
 
-    getAll(): IPaymentMethodDTO[] {
-        return PAYMENTS_METHODS;
-    }
     create({ name }: IPaymentMethodDTO): void {
         const paymentMethod = new PaymentMethod();
 

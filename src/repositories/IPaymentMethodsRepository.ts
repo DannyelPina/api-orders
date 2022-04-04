@@ -2,11 +2,12 @@ interface IPaymentMethodDTO {
     id?: number;
     name: string;
     flag?: string;
+    percentOff?: number;
+    percentToPay?: number;
 }
 
 interface IPaymentMethodsRepository {
-    getAll(): IPaymentMethodDTO[];
-    create(paymentMethod: IPaymentMethodDTO): IPaymentMethodDTO;
+    create(paymentMethod: IPaymentMethodDTO): void;
 }
 
 export { IPaymentMethodDTO, IPaymentMethodsRepository };
