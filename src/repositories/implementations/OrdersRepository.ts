@@ -1,3 +1,5 @@
+import { ORDERS } from "../../database";
+import { Order } from "../../model/Order";
 import { IOrderDTO, IOrdersRepository } from "../IOrdersRepository";
 
 class OrdersRepository implements IOrdersRepository {
@@ -11,10 +13,14 @@ class OrdersRepository implements IOrdersRepository {
     }
 
     getAll(): IOrderDTO[] {
-        throw new Error("Method not implemented.");
+        return ORDERS;
     }
-    create(order: IOrderDTO): void {
-        throw new Error("Method not implemented.");
+
+    create({ customerId, paymentMethodId, products, amount }: IOrderDTO): void {
+        const order = new Order();
+        Object.assign(order, { customerId, paymentMethodId, products, amount });
+
+        ORDERS.push(order);
     }
 }
 
