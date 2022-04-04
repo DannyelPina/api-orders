@@ -22,7 +22,7 @@ class CreateOrderController {
 
             return response.status(201).send();
         } catch (error) {
-            return response.status(500).send(error.message);
+            return response.send(error.message);
         }
     }
 }

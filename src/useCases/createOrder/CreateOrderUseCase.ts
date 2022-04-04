@@ -1,3 +1,4 @@
+import { response } from "express";
 import {
     IOrderDTO,
     IOrdersRepository,
@@ -13,14 +14,17 @@ class CreateOrderUseCase {
         const customer = this.orderRepository.findCustomerById(customerId);
 
         if (!paymentData) {
+            response.status(400);
             throw new Error("Payment method not found");
         }
 
         if (!customer) {
+            response.status(400);
             throw new Error("Customer not found");
         }
 
         if (!products.length) {
+            response.status(400);
             throw new Error("No products specified");
         }
 
@@ -31,6 +35,7 @@ class CreateOrderUseCase {
             );
 
             if (!productData) {
+                response.status(400);
                 throw new Error("Product not found");
             }
 
