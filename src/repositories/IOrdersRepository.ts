@@ -5,7 +5,7 @@ interface IProductOrderedDTO {
 }
 
 interface IOrderDTO {
-    id: number;
+    id?: number;
     customerId: number;
     paymentMethodId: number;
     products: IProductOrderedDTO[];
