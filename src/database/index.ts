@@ -15,9 +15,9 @@ export const PRODUCTS = [
 ];
 
 export const PAYMENTS_METHODS: IPaymentMethodDTO[] = [
-    { id: 1, name: "PayPal" },
-    { id: 2, name: "Credit Card" },
-    { id: 3, name: "Multibanco" },
+    { id: 1, name: "PayPal", flag: "paypal" },
+    { id: 2, name: "Credit Card", flag: "credit-card" },
+    { id: 3, name: "Multibanco", flag: "multibanco" },
 ];
 
 export const CUSTOMERS = [

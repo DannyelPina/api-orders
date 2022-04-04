@@ -10,3 +10,5 @@ ordersRoutes.post("/", (request, response) =>
 ordersRoutes.get("/", (request, response) => {
     response.send("Hello orders");
 });
+
+export { ordersRoutes };
