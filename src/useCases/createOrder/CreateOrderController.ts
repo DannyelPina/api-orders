@@ -13,13 +13,17 @@ class CreateOrderController {
             });
         }
 
-        this.createOrderUseCase.execute({
-            customerId,
-            paymentMethodId,
-            products,
-        });
+        try {
+            this.createOrderUseCase.execute({
+                customerId,
+                paymentMethodId,
+                products,
+            });
 
-        response.status(201).send();
+            return response.status(201).send();
+        } catch (error) {
+            return response.status(500).send(error.message);
+        }
     }
 }
 

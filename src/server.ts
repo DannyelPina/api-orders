@@ -8,7 +8,7 @@ const app = express();
 
 app.use(express.json());
 
-app.use("/", swaggerUi.serve, swaggerUi.setup(swaggerUifile));
+app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerUifile));
 
 app.use(router);
 
