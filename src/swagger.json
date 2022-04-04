@@ -131,7 +131,7 @@
                 }
             }
         },
-        "payments/methods": {
+        "/payments/methods": {
             "post": {
                 "tags": ["Payment methods resource"],
                 "summary": "Create new payment method",
