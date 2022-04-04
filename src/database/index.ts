@@ -1,3 +1,4 @@
+import { IOrderDTO } from "../repositories/IOrdersRepository";
 import { IPaymentMethodDTO } from "../repositories/IPaymentMethodsRepository";
 
 export const PRODUCTS = [
@@ -49,7 +50,7 @@ export const CUSTOMERS = [
     },
 ];
 
-export const ORDERS = [
+export const ORDERS: IOrderDTO[] = [
     {
         id: 1,
         customerId: 1,
