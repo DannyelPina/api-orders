@@ -1,4 +1,4 @@
-import { ORDERS, PAYMENTS_METHODS, PRODUCTS } from "../../database";
+import { CUSTOMERS, ORDERS, PAYMENTS_METHODS, PRODUCTS } from "../../database";
 import { Order } from "../../model/Order";
 import {
     IOrderDTO,
@@ -36,6 +36,10 @@ class OrdersRepository implements IOrdersRepository {
         return PAYMENTS_METHODS.find(
             (paymentMethod) => paymentMethod.id === id
         );
+    }
+
+    findCustomerById(id: number) {
+        return CUSTOMERS.find((customer) => customer.id === id);
     }
 }
 

@@ -19,12 +19,16 @@ class CreateOrderUseCase {
             return acc + productData.price * product.quantity;
         }, 0);
 
-        if (paymentData.flag === "paypal") {
-            amount = amount * 0.9; // 10% discount
+        if (paymentData.flag === "discount") {
+            amount = amount * paymentData.percentToPay; // % discount
         }
 
-        if (paymentData.flag === "multibanco") {
-            console.log("email sent");
+        if (paymentData.flag === "send-mail") {
+            // send email to customer
+            const customer = this.orderRepository.findCustomerById(customerId);
+            console.log(
+                `Send email to ${customer.name} by email ${customer.email}`
+            );
         }
 
         this.orderRepository.create({

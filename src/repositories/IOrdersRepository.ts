@@ -20,6 +20,7 @@ interface IOrdersRepository {
     create(order: IOrderDTO): void;
     findProductById(id: number): IProductOrderedDTO;
     findPaymentMethodById(id: number): IPaymentMethodDTO;
+    findCustomerById(id: number): any;
 }
 
 export { IOrderDTO, IProductOrderedDTO, IOrdersRepository };

@@ -19,7 +19,7 @@ class CreateOrderController {
             products,
         });
 
-        response.status(200).send();
+        response.status(201).send();
     }
 }
 
